@@ -9,7 +9,8 @@ We use MOA to generate synthetic datasets. MOA tutorial can be found in this lin
 1. Download MOA in https://moa.cms.waikato.ac.nz/downloads/
 2. Open the lib folder under moa in a terminal in an integrated development environment such as eclipse.
 3. Input the code of Generate synthetic data streams to generate synthetic data streams in arff file format.
-```java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ConceptDriftStream -s (ImbalancedStream -s (generators.SEAGenerator -f 3) -c 0.8333;0.1667) -d (ImbalancedStream -s (generators.SEAGenerator -f 2) -c 0.1667;0.8333) -p 10000 -w 1) -f SEA_sudden.arff -m 50000```
+```
+java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ConceptDriftStream -s (ImbalancedStream -s (generators.SEAGenerator -f 3) -c 0.8333;0.1667) -d (ImbalancedStream -s (generators.SEAGenerator -f 2) -c 0.1667;0.8333) -p 10000 -w 1) -f SEA_sudden.arff -m 50000
 
 
 

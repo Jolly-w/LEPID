@@ -9,31 +9,7 @@ We use MOA to generate synthetic datasets. MOA tutorial can be found in this lin
 1. Download MOA in https://moa.cms.waikato.ac.nz/downloads/
 2. Open the lib folder under moa in a terminal in an integrated development environment such as eclipse.
 3. Input the code of Generate synthetic data streams to generate synthetic data streams in arff file format.
-Generate synthetic data streams
-# We use the MOA framework and its class hierarchy. Enter the following code in MOA to generate our synthetic dataset.
-
-##############################
-#Generate HyperPlane dataset
-# 50K instances  |  Incremental Drift with imbalance ratio  1:10   |  With 10% Noise
-java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ImbalancedStream -s (generators.HyperplaneGenerator -i 42 -c 3 -a 5 -k 2 -t 0.01 -n 5 -s 10) -c 0.09;0.91) -f .\Hyper.arff -m 50000
-
-
-#Generate Sea_sudden dataset
-# 50K instances  |  Sudden drift with imbalance ratio  5:1 → 1:5   |  Sudden drift occurs at the 10,000th instances  |  The drift window is 1
 java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ConceptDriftStream -s (ImbalancedStream -s (generators.SEAGenerator -f 3) -c 0.8333;0.1667) -d (ImbalancedStream -s (generators.SEAGenerator -f 2) -c 0.1667;0.8333) -p 10000 -w 1) -f SEA_sudden.arff -m 50000
 
-#Generate Sea_gradual dataset
-# 50K instances  |  Gradual drift with imbalance ratio  5:1 → 1:5   |  Gradual drift occurs at the 10,000th instances  |  The drift window is 10000
-java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ConceptDriftStream -s (ImbalancedStream -s (generators.SEAGenerator -f 3) -c 0.8333;0.1667) -d (ImbalancedStream -s (generators.SEAGenerator -f 2) -c 0.1667;0.8333) -p 10000 -w 10000) -f SEA_gradual.arff -m 50000
-
-##############################
-
-#Generate RBF_sudden dataset
-# 50K instances  |  Sudden drift with imbalance ratio  10:5:4:1  →  1:2:2:5   |  Sudden drift occurs at the 10,000th instances  |  The drift window is 1
-java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ConceptDriftStream -s (ImbalancedStream -s (generators.RandomTreeGenerator -c 4 -o 0 -u 21) -c 0.5;0.25;0.2;0.05) -d  (ImbalancedStream -s (generators.RandomRBFGeneratorDrift -s 10.0 -k 50 -c 4 -a 21 -n 100) -c 0.1;0.2;0.2;0.5) -p 10000 -w 1) -f .\RBF_sudden.arff -m 50000
-
-#Generate RBF_gradual dataset
-# 50K instances  |  Gradual drift with imbalance ratio  10:5:4:1  →  1:2:2:5   |  Gradual drift occurs at the 10,000th instances  |  The drift window is 5000
-java -cp moa.jar -javaagent:sizeofag-1.0.4.jar moa.DoTask WriteStreamToARFFFile -s (ConceptDriftStream -s (ImbalancedStream -s (generators.RandomTreeGenerator -c 4 -o 0 -u 21) -c 0.5;0.25;0.2;0.05) -d  (ImbalancedStream -s (generators.RandomRBFGeneratorDrift -s 10.0 -k 50 -c 4 -a 21 -n 100) -c 0.1;0.2;0.2;0.5) -p 10000 -w 5000) -f .\RBF_gradual.arff -m 50000
 
 

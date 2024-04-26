@@ -7,7 +7,7 @@ Real-world data streams often exhibit long-tailed distributions with heavy class
 # Synthetic datasets
 We use MOA to generate synthetic datasets. MOA tutorial can be found in this link: https://moa.cms.waikato.ac.nz/tutorial-5-simulating-concept-drift-in-moa/. 
 1. Download MOA in https://moa.cms.waikato.ac.nz/downloads/
-2. Open the /lib folder under moa in a terminal in an integrated development environment such as eclipse.
+2. Open the */moa/lib* folder under moa in a terminal in an integrated development environment such as eclipse.
 3. Input the code of “Generate synthetic data streams to generate synthetic data streams” in arff file format.
 4. The following code is used to synthesize the SEA_sudden dataset. The SEA_sudden dataset contains the following information: 50K instances | Sudden drift with imbalance ratio 5:1 → 1:5 | Sudden drift occurs at the 10,000th instances | The drift window is 1
 ```
